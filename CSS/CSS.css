@@ -306,7 +306,7 @@ h3.my-profession
 }
 .home-info p
 {
-	margin-bottom: 70px;
+	margin-bottom: 20px;
 	font-size: 20px;
 	color: var(--text-black-700);
 	
@@ -345,6 +345,10 @@ h3.my-profession
 	margin: auto;
 	border-radius: 5px;
 	height: 400px;
+}
+.home a
+{
+	margin-top: 50px;
 }
 /*About Me ==================================================================================================*/
 .about .about-content
