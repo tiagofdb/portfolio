@@ -6,11 +6,11 @@ html
 }
 :root 
 {
-    --bg-black-900: #f2f2fc;
-	--bg-black-100: #fdf9ff;
-    --bg-black-50: #e8dfec;
-    --text-black-900: #302e4d;
-	--text-black-700: #504e70;
+    --bg-black-900: #e7e7e7;
+	--bg-black-100: #f7f7f7;
+    --bg-black-50: #d8d8d8;
+    --text-black-900: #161616;
+	--text-black-700: #202020;
 }
 body.dark
 {
@@ -18,7 +18,7 @@ body.dark
 	--bg-black-100: #222222;
     --bg-black-50: #393939;
     --text-black-900: #ffffff;
-	--text-black-700: #e9e9e9;
+	--text-black-700: #ebebeb;
 }
 
 body
@@ -50,6 +50,10 @@ ul
 	display: block;
 	padding: 0 30px;
 	opacity: 1;
+}
+.section .container .contact
+{
+	min-height: 30px;
 }
 .hidden
 {
@@ -161,6 +165,11 @@ ul
 	font-size: 30px;
 	text-transform: capitalize;
 }
+.aside .logo:hover
+{
+	transform: scale(1.05);
+	transition: 0.3s ease;
+}
 .aside .logo a
 {
 	color: var(--text-black-900);
@@ -258,13 +267,16 @@ ul
 	border-bottom: 1px solid var(--bg-black-50);
 	color: var(--text-black-900);
 	padding: 5px 15px;
+	transition: color 0.3s ease;
 }
-.aside .nav li a:active
+.aside .nav li a.active
 {
 	color: var(--skin-color);
 }
 .aside .nav li a:hover{
 	color: var(--skin-color);
+	transform: scale(1.05);
+	transition: 0.3s ease;
 }
 
 .aside .nav li a i
@@ -398,6 +410,13 @@ h3.my-profession
 	border-bottom: 1px solid var(--bg-black-50);
 }
 .about .about-content .personal-info .info-item p span
+{
+	font-weight: 400;
+	color: var(--text-black-700);
+	margin-left: 4px;
+	display: inline-block;
+}
+.about .about-content .personal-info .info-item p span a
 {
 	font-weight: 400;
 	color: var(--text-black-700);
@@ -663,15 +682,15 @@ margin-bottom: -1px;
 }
 .contact-sub-title
 {
-	color: var(--text-black-900);
+	color: var(--text-black-700);
 	text-align: center;
-	font-size: 15px;
+	font-size: 25px;
 	margin-bottom: 60px;
 }
 .contact .contact-info-item
 {
-	flex: 0 0 25%;
-	max-width: 25%;
+	flex: 0 0 33.33%;
+	max-width: 33.33%;
 	text-align: center;
 	margin-bottom: 60PX;
 }
@@ -681,7 +700,7 @@ margin-bottom: -1px;
 }
 .contact .contact-info-item .icon .fa
 {
-	font-size: 25px;
+	font-size: 40px;
 	color: var(--skin-color);
 }
 .contact .contact-info-item h4
@@ -694,54 +713,17 @@ margin-bottom: -1px;
 }
 .contact .contact-info-item p
 {
-	font-size: 16px;
+	font-size: 20px;
 	line-height: 25px;
 	color: var(--text-black-700);
 	font-weight: 400;
 }
-.contact .contact-form
+.contact .contact-info-item p a
 {
-	flex: 0 0 100%;
-	max-width: 100%;
-}
-.contact .contact-form .col-6
-{
-	flex: 0 0 50%;
-	max-width: 50%;
-}
-.contact .contact-form .col-12
-{
-	flex: 0 0 100%;
-	max-width: 100%;
-}
-.contact .contact-form .form-item
-{
-	margin-bottom: 30px;
-}
-.contact .contact-form .form-item .form-control
-{
-	width: 100%;
-	height: 50px;
-	border-radius: 25px;
-	background: var(--bg-black-100);
-	border: 1px solid var(--bg-black-50);
-	padding: 10px 25px;
-	font-size: 16px;
+	font-size: 20px;
+	line-height: 25px;
 	color: var(--text-black-700);
-	transition: all 0.3s ease;
-}
-.contact .contact-form .form-item .form-control:focus
-{
-	box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
-}
-.contact .contact-form .form-item textarea.form-control
-{
-	height: 140px;
-}
-.contact .contact-form .btn
-{
-	height: 50px;
-	padding: 0 50px;
+	font-weight: 400;
 }
 /*Footer==================================================================================================*/
 .footer {
