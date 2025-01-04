@@ -142,6 +142,11 @@ ul
 {
 	box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
+hr
+{
+	margin-top: 25px;
+	opacity: 0.5;
+}
 /* aside ================================================================================================== */
 .aside
 {
@@ -485,87 +490,116 @@ margin-bottom: -1px;
 	font-weight: 700;
 	color: var(--text-black-900);
 }
-.about .about-content h3.section-title
-{
-	font-size: 24px;
-	margin-bottom: 30px;
-	font-weight: 700;
-	color: var(--text-black-900);
+/* Style for the clickable titles (Experience & Education) */
+.about .about-content h3.title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer; /* Makes it clear that the section is clickable */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
 }
-.about .about-content .timeline-box
-{
-	flex: 0 0 100%;
-	max-width: 100%;
+
+/* Adding hover effect */
+.about .about-content h3.title:hover {
+    color: var(--skin-color); /* Change border color */
+	transition: all 0.3s ease-in-out;
 }
-.about .about-content .timeline
-{
-	background-color: var(--bg-black-100);
-	padding: 30px 15px;
-	border: 1px solid var(--bg-black-50);
-	border-radius: 10px;
-	width: 100%;
-	position: relative;
+/* Icon styling inside the title */
+.about .about-content h3.title i {
+    margin-right: 10px; /* Space between the icon and title text */
+    font-size: 20px; /* Icon size */
+    color: var(--skin-color); /* Default icon color */
 }
-.timeline-item .bullets
-{
-		list-style: disc;
+
+/* When the section is active, rotate the icon inside the title */
+.about .about-content h3.title.active i {
+    transform: rotate(180deg);  /* Rotate the icon when the section is expanded */
+    transition: transform 0.3s ease;  /* Smooth transition */
 }
-.about .about-content .timeline .timeline-item
-{
-	position: relative;
-	padding-left: 37px;
+
+
+/* Timeline container (inside the box) */
+.about .about-content .timeline {
+    background-color: var(--bg-black-100);
+    padding: 25px 20px;
+    border-radius: 10px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    max-height: 0; /* Collapse the section by default */
+    transition: max-height 2s ease-out; /* Smooth transition */
+	padding-top: 5px;
 	padding-bottom: 50px;
 }
-.about .about-content .timeline .timeline-item:last-child
-{
-	padding-bottom: 0;
+
+/* When the section is active, expand it */
+.about .about-content .timeline.active {
+    max-height: 100%; /* Adjust the max-height for visibility */
+	padding-top: 5px;
 }
-.about .about-content .timeline .timeline-item::before
-{
-	content: '';
-	width: 1px;
-	position: absolute;
-	height: 100%;
-	left: 7px;
-	top: 3px;
-	background-color: var(--skin-color);
+.about .about-content .timeline .timeline-item::before {
+    content: '';
+    width: 1px;
+    position: absolute;
+    height: 100%;
+    left: 7px;
+    top: 3px;
+    background-color: var(--skin-color); /* The color of the line */
 }
-.about .about-content .timeline .circle-dot
-{
-	position: absolute;
-	left: 0;
-	top: 3px;
-	height: 15px;
-	width: 15px;
-	border-radius: 50%;
-	background-color: var(--skin-color);
+
+/* Timeline items */
+.about .about-content .timeline .timeline-item {
+    position: relative;
+    padding-left: 37px;
+    padding-bottom: 50px;
+	list-style-type: none;
 }
-.about .about-content .timeline .timeline-date
-{
-	font-weight: 400;
-	font-size: 14px;
-	margin-bottom: 12px;
-	color: var(--text-black-700);
+
+/* Timeline circles */
+.about .about-content .timeline .circle-dot {
+    position: absolute;
+    left: 0;
+    top: 3px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: var(--skin-color);
 }
-.about .about-content .timeline .timeline-date .fa
-{
-	margin-right: 5px;
+
+/* Timeline text */
+.about .about-content .timeline .timeline-date {
+    font-weight: 400;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: var(--text-black-700);
 }
-.about .about-content .timeline .timeline-title
-{
-	font-weight: 700;
-	font-size: 18px;
-	margin-bottom: 15px;
-	text-transform: capitalize;
-	color: var(--text-black-900);
+.about .about-content .timeline .timeline-item .bullets {
+    list-style-type: disc; /* Create bullet points */
+    margin-left: 10px;
+    font-size: 16px;
+    margin-bottom: 12px;
 }
-.about .about-content .timeline .timeline-text
-{
-	line-height: 25px;
-	font-size: 16px;
-	text-align: justify;
-	color: var(--text-black-700);
+
+.about .about-content .timeline .timeline-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: capitalize;
+    color: var(--text-black-900);
 }
+
+.about .about-content .timeline .timeline-text {
+    line-height: 25px;
+    font-size: 16px;
+    text-align: justify;
+    color: var(--text-black-700);
+}
+
 /*Service ==================================================================================================*/
 .service .container
 {
@@ -700,7 +734,7 @@ margin-bottom: -1px;
 }
 .contact .contact-info-item .icon .fa
 {
-	font-size: 40px;
+	font-size: 0px;
 	color: var(--skin-color);
 }
 .contact .contact-info-item h4
@@ -765,6 +799,10 @@ margin-bottom: -1px;
 .footer div a:hover {
 	color: var(--skin-color); 
 	text-decoration: none; 
+}
+.footer a 
+{
+	font-size: 25px;
 }
 /* Responsive ==================================================================================================*/
 @media (max-width:1199px)

@@ -12,3 +12,14 @@ navLinks.forEach(link => {
         link.classList.add('active');
     });
 });
+// Function to toggle the visibility of each section
+function toggleSection(section) {
+    const sectionContent = document.getElementById(section);
+
+    // Toggle the active class on the timeline to expand/collapse
+    sectionContent.classList.toggle('active');
+
+    // Toggle the active class on the title to rotate the icon
+    const sectionTitle = sectionContent.querySelector('.title');
+    sectionTitle.classList.toggle("active");
+}
