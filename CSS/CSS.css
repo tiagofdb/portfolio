@@ -799,6 +799,7 @@ margin-bottom: -1px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     z-index: 999;
     border-radius: 10px;
+	box-shadow: 0 0 50px 600px rgba(0, 0, 0, 0.5);
 }
 
 .popup-gallery.active {
@@ -808,7 +809,7 @@ margin-bottom: -1px;
 .popup-img {
     max-width: 100%;
     border-radius: 10px;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 0 0 var(--bg-color-100);
 }
 .popup-inner {
     display: flex;
@@ -832,6 +833,7 @@ margin-bottom: -1px;
     cursor: pointer;
     user-select: none;
 }
+
 /*contact==================================================================================================*/
 .contact-title
 {

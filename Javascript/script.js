@@ -1,4 +1,4 @@
-/* ============================== typing animation ============================== */
+/* ============================== Typing animation ============================== */
 var typed = new Typed(".typing",{
 	strings:["","Designer","3D Artist","Graphic Designer","Motion Designer","Multimedia Designer"],
 	typeSpeed:100,
@@ -12,15 +12,15 @@ navLinks.forEach(link => {
         link.classList.add('active');
     });
 });
-/* ============================== experience drop ============================== */
-// Function to toggle the visibility of each section
+/* ============================== Experience drop ============================== */
+// Visibility of each section
 function toggleSection(section) {
     const sectionContent = document.getElementById(section);
 
-    // Toggle the active class on the timeline to expand/collapse
+    // Toggle the timeline to expand/collapse
     sectionContent.classList.toggle('active');
 
-    // Toggle the active class on the title to rotate the icon
+    // Toggle rotate the icon
     const sectionTitle = sectionContent.querySelector('.title');
     sectionTitle.classList.toggle("active");
 }
@@ -60,7 +60,7 @@ function openPopup(index) {
         const imgElement = document.createElement('img');
         imgElement.src = image;
         imgElement.alt = "Gallery Image";
-        imgElement.classList.add('popup-img'); // Add a class for styling
+        imgElement.classList.add('popup-img'); 
         galleryContainer.appendChild(imgElement);
     });
 
@@ -74,7 +74,7 @@ function closePopup() {
     document.body.classList.remove('no-scroll'); // Enable page scroll
 }
 
-// Ensure no-scroll class is not applied when the page loads
+// no-scroll class is not applied when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove('no-scroll');
 });
