@@ -162,6 +162,7 @@ hr
 {
 	width: 10px;
 	background: var(--bg-black-900);
+	display: none;
 
 }
 ::-webkit-scrollbar-track
@@ -800,12 +801,12 @@ margin-bottom: -1px;
 }
 
 .modal {
-	width: 50%;
-	height: 80%;
+	width: 80%;
+	height: 90%;
 	display: block;
 	position: relative;
-	top: 10%; 
-	left: 25%;
+	top: 5%; 
+	left: 10%;
 	background: var(--bg-color-100);
 	opacity: 0;
 	overflow-y: auto;
