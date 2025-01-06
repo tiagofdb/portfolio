@@ -24,55 +24,63 @@ function toggleSection(section) {
     const sectionTitle = sectionContent.querySelector('.title');
     sectionTitle.classList.toggle("active");
 }
-/* ==============================  Portfolio Gallery  ============================== */
-const portfolioData = [
-    {
-        images: ["Images/Render_5.jpg", "Images/Render_5.jpg", "Images/Render_5.jpg", "Images/Render_5.jpg"]
-    },
-    {
-        images: ["Images/123.png", "Images/123_1.png", "Images/123_2.png"]
-    },
-    {
-        images: ["Images/img1.png", "Images/img1_1.png", "Images/img1_2.png", "Images/img1_3.png"]
-    },
-    {
-        images: ["Images/mockup3.png", "Images/mockup3_1.png"]
-    },
-    {
-        images: ["Images/tracker.jpeg", "Images/tracker_1.jpeg", "Images/tracker_2.jpeg"]
-    },
-    {
-        images: ["Images/jenga.jpeg", "Images/jenga_1.jpeg"]
-    }
-];
+/* =========================== Images clicker modal =============================*/
+document.addEventListener("DOMContentLoaded", function() {
+    // Attach click event to each trigger element
+    document.querySelectorAll('.trigger').forEach(function(trigger) {
+        trigger.addEventListener('click', function() {
+            // Get the modal ID from the data-modal attribute
+            var modalId = this.getAttribute('data-modal');
+            var modal = document.getElementById(modalId);
 
-let currentIndex = 0;
+            // Toggle the modal visibility
+            if (modal) {
+                modal.classList.toggle('open');
+            }
 
-function openPopup(index) {
-    currentIndex = index;
-    
-    // Clear previous images
-    const galleryContainer = document.getElementById('popup-gallery-images');
-    galleryContainer.innerHTML = "";
+            // Toggle the blur effect on the page wrapper
+            document.querySelector('.page-wrapper').classList.toggle('blur-it');
 
-    // Add all images for the selected portfolio item
-    portfolioData[currentIndex].images.forEach(image => {
-        const imgElement = document.createElement('img');
-        imgElement.src = image;
-        imgElement.alt = "Gallery Image";
-        imgElement.classList.add('popup-img'); 
-        galleryContainer.appendChild(imgElement);
+            // Add no-scroll class to body to prevent scrolling
+            document.body.classList.add('no-scroll');
+            return false;
+        });
     });
 
-    // Show the popup
-    document.getElementById('popup-gallery').classList.add('active');
-    document.body.classList.add('no-scroll'); // Disable page scroll
-}
+    // Attach click event to close buttons
+    document.querySelectorAll('.btn-close').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            // Get the parent modal and close it
+            var modal = this.closest('.modal-wrapper');
+            if (modal) {
+                modal.classList.remove('open');
+            }
 
-function closePopup() {
-    document.getElementById('popup-gallery').classList.remove('active');
-    document.body.classList.remove('no-scroll'); // Enable page scroll
-}
+            // Remove the blur effect on the page wrapper
+            document.querySelector('.page-wrapper').classList.remove('blur-it');
+
+            // Remove no-scroll class from body to enable scrolling
+            document.body.classList.remove('no-scroll');
+            return false;
+        });
+    });
+
+    // Attach click event to modal wrappers to close when clicking outside the modal
+    document.querySelectorAll('.modal-wrapper').forEach(function(modalWrapper) {
+        modalWrapper.addEventListener('click', function(event) {
+            // Check if the click is outside the modal content
+            if (event.target === modalWrapper) {
+                modalWrapper.classList.remove('open');
+                
+                // Remove the blur effect on the page wrapper
+                document.querySelector('.page-wrapper').classList.remove('blur-it');
+
+                // Remove no-scroll class from body to enable scrolling
+                document.body.classList.remove('no-scroll');
+            }
+        });
+    });
+});
 
 // no-scroll class is not applied when the page loads
 document.addEventListener("DOMContentLoaded", () => {

@@ -31,6 +31,12 @@ body
 {
 	overflow: hidden;
 }
+.page-wrapper {
+	width: 100%;
+	height: 100%;
+	background: url(https://goo.gl/OeVhun) center no-repeat;
+	background-size: cover;
+  }
 *
 {
 	margin: 0;
@@ -155,37 +161,21 @@ hr
 ::-webkit-scrollbar
 {
 	width: 10px;
+	background: var(--bg-black-900);
+
 }
 ::-webkit-scrollbar-track
 {
-	background: var(--bg-black-100);
+	border-radius: 10px;
+	opacity: 1;
+
 }
 ::-webkit-scrollbar-thumb
 {
 	background-color: var(--skin-color);
 	border-radius: 10px;
-	border: 2px solid var(--bg-black-100);
-}
-/* For other elements with scrollbars (optional) */
-.popup-inner::-webkit-scrollbar {
-    width: 12px;
 }
 
-.popup-inner::-webkit-scrollbar-track {
-    background: var(--bg-black-100);
-    border-radius: 10px;
-}
-
-.popup-inner::-webkit-scrollbar-thumb {
-    background-color: var(--skin-color);
-    border-radius: 10px;
-    border: 3px solid var(--bg-black-100);
-}
-
-.popup-inner {
-    scrollbar-width: thin;
-    scrollbar-color: var(--skin-color) var(--bg-black-100);
-}
 /* aside ================================================================================================== */
 .aside
 {
@@ -786,54 +776,87 @@ margin-bottom: -1px;
 	display: block;
 }
 /*popup gallery==================================================================================================*/
-.popup-gallery {
-	display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: auto;
-    padding: 0;
-    background-color: var(--bg-black-100);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    border-radius: 10px;
-	box-shadow: 0 0 50px 600px rgba(0, 0, 0, 0.5);
+
+.blur-it {
+	filter: blur(4px);
+}
+.modal-wrapper {
+	width: 100%;
+	height: 100%;
+	max-width: 100vw;
+	position: fixed;
+	top: 0; 
+	left: 0;
+	background: rgba(0, 0, 0, 0.9);
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.25s ease;
+	z-index: 100000;
+}
+  
+.modal-wrapper.open {
+	opacity: 1;
+	visibility: visible;
 }
 
-.popup-gallery.active {
-    display: flex;
-}
-
-.popup-img {
-    max-width: 100%;
-    border-radius: 10px;
-	box-shadow: 0 0 0 var(--bg-color-100);
-}
-.popup-inner {
-    display: flex;
-	flex-direction: column;
-    align-items: center;
-	max-height: 80vh;
+.modal {
+	width: 50%;
+	height: 80%;
+	display: block;
+	position: relative;
+	top: 10%; 
+	left: 25%;
+	background: var(--bg-color-100);
+	opacity: 0;
 	overflow-y: auto;
 }
-
-#popup-gallery-images {
-    display: flex;
-	flex-direction: column;
+.modal img
+{
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	display: block;
 }
-/* Close button */
-.close-btn {
-    position: absolute;
+  
+.modal-wrapper.open .modal {
+	opacity: 1;
+}
+.head a i{
+    font-size: 45px;
+    position: fixed;
     top: 20px;
-    right: 30px;
-    font-size: 60px;
+    left: 93%;
     color: var(--skin-color);
-    cursor: pointer;
-    user-select: none;
+}
+.head a i:hover
+{
+	transform: scale(1.15);
+	transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+    .modal {
+        width: 100%;
+        height: 100%;
+		left: 0;
+		top: 0;
+    }
+	.head a i {
+		width: 80%;
+	}
 }
 
+@media (max-width: 480px) {
+    .modal {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    .head a i {
+        font-size: 35px;
+        top: 15px;
+        right: 15px;
+    }
+}
 /*contact==================================================================================================*/
 .contact-title
 {
@@ -862,7 +885,7 @@ margin-bottom: -1px;
 }
 .contact .contact-info-item .icon .fa
 {
-	font-size: 0px;
+	font-size: 35px;
 	color: var(--skin-color);
 }
 .contact .contact-info-item h4
@@ -894,7 +917,7 @@ margin-bottom: -1px;
   padding: 20px; 
   text-align: center; 
 	position: relative;
-	z-index: 1;
+	z-index: 100000001;
 	margin-left: 270px;
 }
 
