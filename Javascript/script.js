@@ -26,6 +26,26 @@ function toggleSection(section) {
 }
 /* =========================== Images clicker modal =============================*/
 document.addEventListener("DOMContentLoaded", function() {
+    // Function to update active link based on scroll position
+    function updateActiveLink() {
+        let sections = document.querySelectorAll('section');
+        let scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+        sections.forEach(section => {
+            let sectionTop = section.offsetTop;
+            let sectionHeight = section.offsetHeight;
+            let sectionId = section.getAttribute('id');
+
+            if (scrollPosition >= sectionTop - 150 && scrollPosition < sectionTop + sectionHeight) {
+                document.querySelector('.nav li a.active').classList.remove('active');
+                document.querySelector('.nav li a[href*=' + sectionId + ']').classList.add('active');
+            }
+        });
+    }
+
+    // Attach the scroll event listener
+    window.addEventListener('scroll', updateActiveLink);
+
     // Attach click event to each trigger element
     document.querySelectorAll('.trigger').forEach(function(trigger) {
         trigger.addEventListener('click', function() {
@@ -38,10 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 modal.classList.toggle('open');
             }
 
-            // Toggle the blur effect on the page wrapper
-            document.querySelector('.page-wrapper').classList.toggle('blur-it');
-
-            // Add no-scroll class to body to prevent scrolling
+            // Add no-scroll class to body to prevent website scrolling
             document.body.classList.add('no-scroll');
             return false;
         });
@@ -56,10 +73,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 modal.classList.remove('open');
             }
 
-            // Remove the blur effect on the page wrapper
-            document.querySelector('.page-wrapper').classList.remove('blur-it');
-
-            // Remove no-scroll class from body to enable scrolling
+            // Remove no-scroll class from body to enable website scrolling
             document.body.classList.remove('no-scroll');
             return false;
         });
@@ -72,17 +86,14 @@ document.addEventListener("DOMContentLoaded", function() {
             if (event.target === modalWrapper) {
                 modalWrapper.classList.remove('open');
                 
-                // Remove the blur effect on the page wrapper
-                document.querySelector('.page-wrapper').classList.remove('blur-it');
-
-                // Remove no-scroll class from body to enable scrolling
+                // Remove no-scroll class from body to enable website scrolling
                 document.body.classList.remove('no-scroll');
             }
         });
     });
 });
 
-// no-scroll class is not applied when the page loads
+// Ensure the website scroll is visible when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove('no-scroll');
 });

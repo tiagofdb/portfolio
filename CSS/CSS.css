@@ -20,17 +20,17 @@ body.dark
     --text-black-900: #ffffff;
 	--text-black-700: #ebebeb;
 }
-
+/* CSS for no-scroll class */
+.no-scroll {
+    overflow: hidden;
+}
 body
 {
 	line-height: 1.5;
 	font-size: 16px;
 	font-family: 'Kanit', sans-serif;
 }
-.no-scroll
-{
-	overflow: hidden;
-}
+
 .page-wrapper {
 	width: 100%;
 	height: 100%;
@@ -162,14 +162,11 @@ hr
 {
 	width: 10px;
 	background: var(--bg-black-900);
-	display: none;
-
 }
 ::-webkit-scrollbar-track
 {
 	border-radius: 10px;
 	opacity: 1;
-
 }
 ::-webkit-scrollbar-thumb
 {
@@ -308,6 +305,7 @@ hr
 {
 	color: var(--skin-color);
 }
+
 .aside .nav li a:hover{
 	color: var(--skin-color);
 	transform: scale(1.05);
@@ -549,10 +547,8 @@ margin-bottom: -1px;
 /* When the section is active, rotate the icon inside the title */
 .about .about-content h3.title.active i {
     transform: rotate(180deg);  /* Rotate the icon when the section is expanded */
-    transition: transform 0.3s ease;  /* Smooth transition */
+    transition: transform 0.6s ease;  /* Smooth transition */
 }
-
-
 /* Timeline container (inside the box) */
 .about .about-content .timeline {
     background-color: var(--bg-black-100);
@@ -562,7 +558,7 @@ margin-bottom: -1px;
     position: relative;
     overflow: hidden;
     max-height: 0; /* Collapse the section by default */
-    transition: max-height 2s ease-out; /* Smooth transition */
+    transition: max-height 0.6s ease-out; /* Smooth transition */
 	padding-top: 5px;
 	padding-bottom: 50px;
 }
@@ -724,56 +720,18 @@ margin-bottom: -1px;
 }
 .portfolio .portfolio-item-inner
 {
-	border: 6px solid var(--bg-black-100);
-	border-radius: 10px;
+	border: 2px solid var(--bg-black-100);
+	border-radius: 5px;
 	overflow: hidden;
 	cursor: pointer;
 }
 .portfolio .portfolio-item-inner .portfolio-img img
 {
 	width: 100%;
+	height: 200px;
 	display: block;
-}
-
-/*portfolio ==================================================================================================*/
-.portfolio .container
-{
-	padding-bottom: 40px;
-}
-.portfolio .portfolio-heading
-{
-	flex: 0 0 100%;
-	max-width: 100%;
-	margin-bottom: 40px;
-}
-.portfolio .portfolio-heading h2
-{
-	color: var(--text-black-900);
-	font-weight: 500;
-}
-.portfolio .portfolio-item
-{
-	flex: 0 0 33.33%;
-	max-width: 33.33%;
-	margin-bottom: 30px;
-	transition: all 0.3s ease;
-
-}
-.portfolio .portfolio-item:hover
-{
-	transform: scale(1.05);
-
-}
-.portfolio .portfolio-item-inner
-{
-	border: 6px solid var(--bg-black-100);
-	border-radius: 10px;
-	overflow: hidden;
-	cursor: pointer;
-}
-.portfolio .portfolio-item-inner .portfolio-img img
-{
-	width: 100%;
+	object-fit: cover;
+	border-radius: 5px;
 	display: block;
 }
 /*popup gallery==================================================================================================*/
@@ -801,12 +759,12 @@ margin-bottom: -1px;
 }
 
 .modal {
-	width: 80%;
-	height: 90%;
+	width: 60%;
+	height: 80%;
 	display: block;
 	position: relative;
-	top: 5%; 
-	left: 10%;
+	top: 10%; 
+	left: 20%;
 	background: var(--bg-color-100);
 	opacity: 0;
 	overflow-y: auto;
@@ -950,7 +908,9 @@ margin-bottom: -1px;
 
 .footer div a:hover {
 	color: var(--skin-color); 
-	text-decoration: none; 
+	text-decoration: none;
+	transform: scale(1.15);
+	transition: all 0.3s ease-in-out;
 }
 .footer a 
 {
