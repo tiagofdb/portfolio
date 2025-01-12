@@ -75,6 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var modal = this.closest('.modal-wrapper');
             if (modal) {
                 modal.classList.remove('open');
+                pauseVideo(modal); // Pause the video when modal closes
             }
 
             // Remove no-scroll class from body to enable website scrolling
@@ -89,6 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Check if the click is outside the modal content
             if (event.target === modalWrapper) {
                 modalWrapper.classList.remove('open');
+                pauseVideo(modalWrapper); // Pause the video when modal closes
 
                 // Remove no-scroll class from body to enable website scrolling
                 document.body.classList.remove('no-scroll');
@@ -114,6 +116,15 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.scrollTop = 0; // Reset scroll for the modal wrapper
             modal.querySelector(".modal").scrollTop = 0; // Reset scroll for the inner modal
     }
+
+    // Function to pause video and stop GIF
+    function pauseVideo(modal) {
+        const video = modal.querySelector("video");
+        if (video) {
+            video.pause(); // Immediately pause the video
+        }
+    }
+
 });
 
 // Ensure the website scroll is visible when the page loads
