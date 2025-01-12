@@ -1,10 +1,11 @@
 /* ============================== Typing animation ============================== */
-var typed = new Typed(".typing",{
-	strings:["","Designer","3D Artist","Graphic Designer","Motion Designer","Multimedia Designer"],
-	typeSpeed:100,
-	BackSpeed:150,
-	loop:true
-})
+var typed = new Typed(".typing", {
+    strings: ["", "Designer", "3D Artist", "Graphic Designer", "Motion Designer", "Multimedia Designer"],
+    typeSpeed: 100,
+    BackSpeed: 150,
+    loop: true
+});
+
 const navLinks = document.querySelectorAll('.nav li a');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -12,6 +13,7 @@ navLinks.forEach(link => {
         link.classList.add('active');
     });
 });
+
 /* ============================== Experience drop ============================== */
 // Visibility of each section
 function toggleSection(section) {
@@ -24,8 +26,9 @@ function toggleSection(section) {
     const sectionTitle = sectionContent.querySelector('.title');
     sectionTitle.classList.toggle("active");
 }
-/* =========================== Images clicker modal =============================*/
-document.addEventListener("DOMContentLoaded", function() {
+
+/* =========================== Images clicker modal ============================= */
+document.addEventListener("DOMContentLoaded", function () {
     // Function to update active link based on scroll position
     function updateActiveLink() {
         let sections = document.querySelectorAll('section');
@@ -47,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('scroll', updateActiveLink);
 
     // Attach click event to each trigger element
-    document.querySelectorAll('.trigger').forEach(function(trigger) {
-        trigger.addEventListener('click', function() {
+    document.querySelectorAll('.trigger').forEach(function (trigger) {
+        trigger.addEventListener('click', function () {
             // Get the modal ID from the data-modal attribute
             var modalId = this.getAttribute('data-modal');
             var modal = document.getElementById(modalId);
@@ -56,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Toggle the modal visibility
             if (modal) {
                 modal.classList.toggle('open');
+                resetMedia(modal); // Reset video and GIF when modal opens
             }
 
             // Add no-scroll class to body to prevent website scrolling
@@ -65,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Attach click event to close buttons
-    document.querySelectorAll('.btn-close').forEach(function(btn) {
-        btn.addEventListener('click', function() {
+    document.querySelectorAll('.btn-close').forEach(function (btn) {
+        btn.addEventListener('click', function () {
             // Get the parent modal and close it
             var modal = this.closest('.modal-wrapper');
             if (modal) {
@@ -80,17 +84,36 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Attach click event to modal wrappers to close when clicking outside the modal
-    document.querySelectorAll('.modal-wrapper').forEach(function(modalWrapper) {
-        modalWrapper.addEventListener('click', function(event) {
+    document.querySelectorAll('.modal-wrapper').forEach(function (modalWrapper) {
+        modalWrapper.addEventListener('click', function (event) {
             // Check if the click is outside the modal content
             if (event.target === modalWrapper) {
                 modalWrapper.classList.remove('open');
-                
+
                 // Remove no-scroll class from body to enable website scrolling
                 document.body.classList.remove('no-scroll');
             }
         });
     });
+
+    // Function to reset video and GIF
+    function resetMedia(modal) {
+        const video = modal.querySelector("video");
+        const gif = modal.querySelector("img");
+
+        if (video) {
+            video.currentTime = 0; // Reset video to the start
+        }
+
+        if (gif) {
+            const gifSrc = gif.src; // Store the current GIF source
+            gif.src = ""; // Temporarily clear the GIF source
+            gif.src = gifSrc; // Reassign the source to reload the GIF
+        }
+            // Scroll the modal content to the top
+            modal.scrollTop = 0; // Reset scroll for the modal wrapper
+            modal.querySelector(".modal").scrollTop = 0; // Reset scroll for the inner modal
+    }
 });
 
 // Ensure the website scroll is visible when the page loads

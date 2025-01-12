@@ -760,10 +760,10 @@ margin-bottom: -1px;
 
 .modal {
 	width: 60%;
-	height: 80%;
+	height: 68%;
 	display: block;
 	position: relative;
-	top: 10%; 
+	top: 15%; 
 	left: 20%;
 	background: var(--bg-color-100);
 	opacity: 0;
