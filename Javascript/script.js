@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var modal = this.closest('.modal-wrapper');
             if (modal) {
                 modal.classList.remove('open');
-                pauseVideo(modal); // Pause the video when modal closes
+                pauseVideos(modal); // Pause the videos when modal closes
             }
 
             // Remove no-scroll class from body to enable website scrolling
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Check if the click is outside the modal content
             if (event.target === modalWrapper) {
                 modalWrapper.classList.remove('open');
-                pauseVideo(modalWrapper); // Pause the video when modal closes
+                pauseVideos(modalWrapper); // Pause the videos when modal closes
 
                 // Remove no-scroll class from body to enable website scrolling
                 document.body.classList.remove('no-scroll');
@@ -98,31 +98,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Function to reset video and GIF
+    // Function to reset videos and GIFs
     function resetMedia(modal) {
-        const video = modal.querySelector("video");
-        const gif = modal.querySelector("img");
+        const videos = modal.querySelectorAll("video");
+        const gifs = modal.querySelectorAll("img");
 
-        if (video) {
+        videos.forEach(video => {
             video.currentTime = 0; // Reset video to the start
-        }
+        });
 
-        if (gif) {
+        gifs.forEach(gif => {
             const gifSrc = gif.src; // Store the current GIF source
             gif.src = ""; // Temporarily clear the GIF source
             gif.src = gifSrc; // Reassign the source to reload the GIF
-        }
-            // Scroll the modal content to the top
-            modal.scrollTop = 0; // Reset scroll for the modal wrapper
-            modal.querySelector(".modal").scrollTop = 0; // Reset scroll for the inner modal
+        });
+
+        // Scroll the modal content to the top
+        modal.scrollTop = 0; // Reset scroll for the modal wrapper
+        modal.querySelector(".modal").scrollTop = 0; // Reset scroll for the inner modal
     }
 
-    // Function to pause video and stop GIF
-    function pauseVideo(modal) {
-        const video = modal.querySelector("video");
-        if (video) {
+    // Function to pause all videos
+    function pauseVideos(modal) {
+        const videos = modal.querySelectorAll("video");
+        videos.forEach(video => {
             video.pause(); // Immediately pause the video
-        }
+        });
     }
 
 });
