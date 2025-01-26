@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         // Scroll the modal content to the top
-        modal.scrollTop = 0; // Reset scroll for the modal wrapper
+
         modal.querySelector(".modal").scrollTop = 0; // Reset scroll for the inner modal
     }
 
