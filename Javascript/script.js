@@ -127,6 +127,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+document.querySelectorAll('video').forEach(video => {
+	video.muted = true;
+});
+
 
 // Ensure the website scroll is visible when the page loads
 document.addEventListener("DOMContentLoaded", () => {
